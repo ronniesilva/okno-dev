@@ -1,0 +1,41 @@
+1 gerei a chave
+    $ ssh-keygen -t rsa -C "ronniefsilva@gmail.com"
+2 adicionei a chave ssa id_rsa.pub no site github.com
+3 gerei o arquivo config (este arquivo)
+
+    # Config Github (default)
+    Host gh
+    HostName github.com
+    User git
+    IdentityFile ~/.ssh/Id_rsa
+
+4 rodei o comando na pasta ~/.ssh/
+    $ ssh-add id_rsa
+    
+    ps: se receber a mensagem "Could not open a connection to your authentication agent."
+        rodar o comando: 
+        $ eval $(ssh-agent)
+        
+        e depois rodar:
+        $ ssh-add id_rsa
+    
+5 Verificar se a chave foi adicionada
+    $ ssh-add -l
+6 Colocar nos known_hosts
+    $ ssh -T gh
+
+7 Inicializar repositorio Git no diretorio do projeto
+    $ git init
+    $ git remote add origin git@gh:ronniesilva/oknodev.git
+8 Pegar o que já tem no repositorio
+    $ git pull origin master
+
+    Usar pelo visual studio code
+
+Para enviar os arquivos
+
+1 Marcar como stage
+2 Dar um commit
+3 Enviar as modificações comitadas
+    $ git push origin master
+
