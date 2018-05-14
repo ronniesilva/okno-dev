@@ -1,3 +1,9 @@
-<p>
-  manager works!
-</p>
+<mat-toolbar color="primary">
+  <mat-toolbar-row>
+    <mat-icon class="example-icon" routerLink="/manager" routerLinkActive="active">menu</mat-icon>
+    <mat-icon class="example-icon" routerLink="companyadd" routerLinkActive="active">note_add</mat-icon>
+    <mat-icon class="example-icon" routerLink="/logout" routerLinkActive="active">exit_to_app</mat-icon>
+  </mat-toolbar-row>
+</mat-toolbar>
+
+<router-outlet></router-outlet>

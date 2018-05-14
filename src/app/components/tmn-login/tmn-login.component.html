@@ -1,3 +1,15 @@
-<p>
-  tmn-login works!
-</p>
+<div class="example-container">
+  <mat-form-field>
+    <input matInput placeholder="Empresa Id Code" name="company" id="company" type="text" class="validate" [(ngModel)]="company"
+      required minlength="3" #companyControl="ngModel">
+  </mat-form-field>
+  <br/>
+  <mat-form-field>
+    <input matInput placeholder="Senha"  name="passwd" id="password" type="password" class="validate" [(ngModel)]="passwd" required minlength="6" #pwControl="ngModel">
+  </mat-form-field>
+
+  <div class="button-row">
+    <button mat-raised-button color="primary" type="submit" name="action" [disabled]="companyControl.invalid || pwControl.invalid"
+    (click)="onSigninTerminal()">Entrar</button>
+  </div>
+</div>

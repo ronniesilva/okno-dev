@@ -1,3 +1,10 @@
-<p>
-  tmn-rating works!
-</p>
+<div class="button-row">
+  <button mat-mini-fab color="primary">
+      {{ rating?.like }}
+    <mat-icon aria-label="Example icon-button with a heart icon" (click)="onLikeDislike(1)">thumb_up</mat-icon>
+  </button>
+  <button mat-mini-fab color="warn">
+      {{ rating?.dislike }}
+    <mat-icon aria-label="Example icon-button with a heart icon" (click)="onLikeDislike(-1)">thumb_down</mat-icon>
+  </button>
+</div>

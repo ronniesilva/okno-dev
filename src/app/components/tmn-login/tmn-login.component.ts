@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tmn-login',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TmnLoginComponent implements OnInit {
 
-  constructor() { }
+  company: string;
+
+  constructor(
+    private router: Router
+  ) { }
 
   ngOnInit() {
+  }
+
+  onSigninTerminal() {
+    this.router.navigate(['/rating', this.company]);
   }
 
 }
