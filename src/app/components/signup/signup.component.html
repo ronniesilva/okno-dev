@@ -1,0 +1,29 @@
+<div class="container">
+  <h3>Signup</h3>
+  <br />
+
+  <!-- email -->
+  <mat-form-field>
+    <input matInput placeholder="Email" name="email" id="email" type="email" class="validate" [(ngModel)]="email" required minlength="3"
+      #emailControl="ngModel">
+  </mat-form-field>
+  <br/>
+  <!-- passwd01 -->
+  <mat-form-field>
+    <input matInput placeholder="Senha" name="passwd1" id="password1" type="password" class="validate" [(ngModel)]="passwd1"
+      required minlength="6" #pw1Control="ngModel">
+  </mat-form-field>
+
+  <!-- passwd02 -->
+  <mat-form-field>
+    <input matInput placeholder="Repita a Senha" name="passwd2" id="password2" type="password" class="validate" [(ngModel)]="passwd2"
+      required minlength="6" #pw2Control="ngModel">
+  </mat-form-field>
+  <br />
+  <mat-action-row>
+      <button mat-raised-button color="primary" type="submit" name="action" [disabled]="emailControl.invalid || pw1Control.invalid || pw2Control.invalid"
+        (click)="onSignup()">Cadastrar</button>
+      <button mat-button color="secondary" routerLink="/home" routerLinkActive="active">Cancelar</button>
+    </mat-action-row>
+
+</div>

@@ -13,8 +13,9 @@ import { CompaniesService } from './providers/companies.service';
 import { RatingService } from './providers/rating.service';
 import { UsersService } from './providers/users.service';
 
-import { AngularFireModule } from 'angularfire2';
+// Firebase
 import { environment } from '../environments/environment';
+import { AngularFireModule } from 'angularfire2';
 import { AngularFirestoreModule } from 'angularfire2/firestore';
 import { AngularFireAuthModule } from 'angularfire2/auth';
 

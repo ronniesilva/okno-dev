@@ -1,4 +1,14 @@
 <div class="example-container">
+
+  <!-- header -->
+  <div class="row center-align">
+    <img width="100" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
+    <h4>
+      OkNo
+    </h4>
+  </div>
+
+  <!-- content -->
   <mat-form-field>
     <input matInput placeholder="Email" name="email" id="email" type="email" class="validate" [(ngModel)]="email" required minlength="3"
       #emailControl="ngModel">
@@ -14,6 +24,13 @@
   <mat-action-row>
     <button mat-raised-button color="primary" type="submit" name="action" [disabled]="emailControl.invalid || pwControl.invalid"
       (click)="onSignin()">Entrar</button>
-    <button mat-button color="secondary" routerLink="/signup" routerLinkActive="active">Cadastrar</button>
+    <button mat-button color="secondary" routerLink="signup" routerLinkActive="active">Cadastrar</button>
   </mat-action-row>
+
+  <!-- footer -->
+  <!-- Botão para o terminal -->
+  <br />
+  <div class="button-row">
+    <button mat-raised-button color="warn" routerLink="/terminal" routerLinkActive="active">Terminal</button>
+  </div>
 </div>

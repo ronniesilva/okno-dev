@@ -25,9 +25,9 @@ export class UsersService {
     return this.usersRef
       .doc<User>(user.uid)
       .set({ // Set substitui o objeto inteito
-        'uid': user.uid,
-        'email': user.email,
-        'passwd': user.passwd
+        uid: user.uid,
+        email: user.email,
+        passwd: user.passwd
       });
   }
 

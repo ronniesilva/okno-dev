@@ -10,6 +10,7 @@ import { MngDashboardComponent } from './mng-dashboard/mng-dashboard.component';
 import { TmnLoginComponent } from './tmn-login/tmn-login.component';
 import { TmnRatingComponent } from './tmn-rating/tmn-rating.component';
 import { MngCompanyAddComponent } from './mng-company-add/mng-company-add.component';
+import { SignupComponent } from './signup/signup.component';
 
 @NgModule({
   imports: [
@@ -21,18 +22,20 @@ import { MngCompanyAddComponent } from './mng-company-add/mng-company-add.compon
     ComponentsRoutingModule
   ],
   declarations: [
-    SigninComponent,
+    MngCompanyAddComponent,
     MngDashboardComponent,
     TmnLoginComponent,
     TmnRatingComponent,
-    MngCompanyAddComponent
+    SigninComponent,
+    SignupComponent
   ],
   exports: [
-    SigninComponent,
+    MngCompanyAddComponent,
     MngDashboardComponent,
     TmnLoginComponent,
     TmnRatingComponent,
-    MngCompanyAddComponent
+    SigninComponent,
+    SignupComponent
   ]
 })
 export class ComponentsModule { }

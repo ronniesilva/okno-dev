@@ -6,23 +6,21 @@ import { AngularFireAuth } from 'angularfire2/auth';
 export class AuthService {
 
   constructor(
-    private afAuth: AngularFireAuth
+    private angularFireAuth: AngularFireAuth
   ) { }
 
 
   // insere usuario no AUTH
-  addUserAuth(email: string, password: string): Promise<any> {
-    return this.afAuth.auth
-      .createUserWithEmailAndPassword(email, password)
-      .catch(err => {
-        console.log('error:' + err);
-      });
+  addUserAuth(email: string, passwd: string): Promise<any> {
+    return this.angularFireAuth.auth
+      .createUserWithEmailAndPassword(email, passwd)
+      .catch();
   }
 
   // efetua logout no AUTH
   logout(): Promise<any> {
     console.log('Auth: authLogout()');
-    return this.afAuth.auth
+    return this.angularFireAuth.auth
       .signOut()
       .catch(err => {
         console.log('erro: ' + err);
@@ -30,7 +28,7 @@ export class AuthService {
   }
 
   isAuthenticated() {
-    const user = this.afAuth.authState;
+    const user = this.angularFireAuth.authState;
     return user.subscribe(res => {
       if (res !== null) {
         return true;
@@ -41,7 +39,7 @@ export class AuthService {
   }
   // autentica usuario e senha no AUTH
   signinWithEmail(email: string, password: string): Promise<boolean> {
-    return this.afAuth.auth
+    return this.angularFireAuth.auth
       .signInWithEmailAndPassword(email, password)
       .catch(err => {
         // console.log('Erro na autenticacao: ' + err);
