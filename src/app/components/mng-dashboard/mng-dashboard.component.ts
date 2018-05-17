@@ -15,7 +15,7 @@ export class MngDashboardComponent implements OnInit {
 
   userUid = 'Om8jvAvm6GWhhDP3qZFQW6NokQQ2';
   currentUser: User;
-  myCompanies$: Observable<{}[]>;
+  companies$: Observable<{}[]>;
 
   constructor(
     public companiesService: CompaniesService,
@@ -30,7 +30,7 @@ export class MngDashboardComponent implements OnInit {
         this.currentUser = user;
       });
 
-    this.myCompanies$ = this.usersService.usersRef.doc(this.userUid)
+    this.companies$ = this.usersService.usersRef.doc(this.userUid)
       .collection('companies').valueChanges();
   }
 

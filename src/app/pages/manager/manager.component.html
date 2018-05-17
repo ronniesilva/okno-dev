@@ -1,9 +1,27 @@
 <mat-toolbar color="primary">
-  <mat-toolbar-row>
-    <mat-icon class="example-icon" routerLink="/manager" routerLinkActive="active">menu</mat-icon>
-    <mat-icon class="example-icon" routerLink="companyadd" routerLinkActive="active">note_add</mat-icon>
-    <mat-icon class="example-icon" routerLink="/logout" routerLinkActive="active">exit_to_app</mat-icon>
-  </mat-toolbar-row>
+    <mat-icon (click)="snav.toggle()">menu</mat-icon>
+    <h2 class="app-title">Okno</h2>
 </mat-toolbar>
 
-<router-outlet></router-outlet>
+<!-- Creates a layout with a left-positioned sidenav and explicit content. -->
+<mat-sidenav-container class="sidecontainer">
+  <mat-sidenav #snav mode="over">
+    <p (click)="snav.toggle()" routerLink="/manager" routerLinkActive="active">
+      <mat-icon>dashboard</mat-icon>
+      Dashboard
+    </p>
+    <p (click)="snav.toggle()" routerLink="companyadd" routerLinkActive="active">
+      <mat-icon>note_add</mat-icon>
+      Adicionar Empresa
+    </p>
+    <p (click)="snav.toggle()" routerLink="/logout" routerLinkActive="active">
+      <mat-icon>exit_to_app</mat-icon>
+      Logout
+    </p>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+  </mat-sidenav-content>
+</mat-sidenav-container>

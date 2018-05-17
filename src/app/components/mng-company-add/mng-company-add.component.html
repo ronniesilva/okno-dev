@@ -1,3 +1,5 @@
+<p>Cadastrar nova empresa:</p>
+
 <div class="example-container">
     <mat-form-field>
         <input matInput placeholder="Empresa Id Code" name="company" id="company" type="text" class="validate" [(ngModel)]="company"
@@ -11,6 +13,6 @@
 
     <div class="button-row">
         <button mat-raised-button color="primary" type="submit" name="action" [disabled]="companyControl.invalid || pwControl.invalid"
-        (click)="companyAdd()">Cadastrar Empresa</button>
+        (click)="companyAdd()">Cadastrar</button>
     </div>
 </div>

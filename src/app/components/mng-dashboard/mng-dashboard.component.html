@@ -1,23 +1,18 @@
-<div class="container">
-  <p>Logado com {{ currentUser?.email }}</p>
-  <div *ngIf="companiesService.companies$; else nenhumaEmpresaCadastrada">
-      <p>
-          Empresas:
-      </p>
-      <!-- Mostra empresas cadastrados -->
-      <ul materialize="collapsible" class="collapsible" data-collapsible="accordion" *ngFor="let company of myCompanies$ | async">
-          <li>
-              <div class="collapsible-header">
-                  {{ company.name }}
-                  <a class="button is-light right" [routerLink]="['/rating',company.name]" routerLinkActive="active">
-                      <i class="material-icons">open_in_new</i>
-                  </a>
-              </div>
-              <div class="collapsible-body">
-                  {{ company.name }}
-              </div>
-          </li>
-      </ul>
-  </div>
-  <ng-template #nenhumaEmpresaCadastrada>Nenhuma empresa cadastrada</ng-template>
-</div>
+<p>
+    Empresas:
+</p>
+<mat-accordion class="accordion" *ngFor="let company of companies$ | async">
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title>
+                    {{ company.name }}
+            </mat-panel-title>
+            <mat-panel-description>
+                    <a [routerLink]="['/rating',company.name]" routerLinkActive="active">
+                        <i class="material-icons">open_in_new</i>
+                    </a>
+                    <!-- <mat-icon>open_in_new</mat-icon> -->
+            </mat-panel-description>
+        </mat-expansion-panel-header>
+    </mat-expansion-panel>
+</mat-accordion>

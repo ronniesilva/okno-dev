@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { CompaniesService } from '../../providers/companies.service';
 import { Company } from '../../interfaces/company';
@@ -16,6 +17,7 @@ export class MngCompanyAddComponent implements OnInit {
   passwd: string;
 
   constructor(
+    private router: Router,
     public companiesService: CompaniesService
   ) { }
 
@@ -38,6 +40,7 @@ export class MngCompanyAddComponent implements OnInit {
           this.companiesService.setCompanyId(company)
             .then(doc => {
               console.log('Cadastrado com sucesso!');
+              this.router.navigate(['/manager']);
             })
             .catch(err => {
               console.log('[ERRO]:' + err);

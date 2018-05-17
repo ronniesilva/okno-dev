@@ -1,16 +1,19 @@
 <div class="example-container">
   <mat-form-field>
-    <input matInput placeholder="Email" name="email" id="email" type="email" class="validate" [(ngModel)]="email" required minlength="3" #emailControl="ngModel">
+    <input matInput placeholder="Email" name="email" id="email" type="email" class="validate" [(ngModel)]="email" required minlength="3"
+      #emailControl="ngModel">
   </mat-form-field>
   <br/>
   <mat-form-field>
-    <input matInput placeholder="Senha" name="passwd" id="password" type="password" class="validate" [(ngModel)]="passwd" required minlength="6" #pwControl="ngModel">
+    <input matInput placeholder="Senha" name="passwd" id="password" type="password" class="validate" [(ngModel)]="passwd" required
+      minlength="6" #pwControl="ngModel">
   </mat-form-field>
 
-  <div class="button-row">
-    <button mat-raised-button color="primary" type="submit" name="action" [disabled]="emailControl.invalid || pwControl.invalid" (click)="onSignin()">Entrar</button>
-  </div>
-  <div class="button-row">
-    <button mat-raised-button color="secondary"  routerLink="/signup" routerLinkActive="active">Cadastrar</button>
-  </div>
+  <br />
+
+  <mat-action-row>
+    <button mat-raised-button color="primary" type="submit" name="action" [disabled]="emailControl.invalid || pwControl.invalid"
+      (click)="onSignin()">Entrar</button>
+    <button mat-button color="secondary" routerLink="/signup" routerLinkActive="active">Cadastrar</button>
+  </mat-action-row>
 </div>
