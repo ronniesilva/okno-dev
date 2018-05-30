@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ComponentsRoutingModule } from './components-routing.module';
 import { MaterialdesignModule } from './../modules/materialdesign.module';
@@ -11,11 +11,14 @@ import { TmnLoginComponent } from './tmn-login/tmn-login.component';
 import { TmnRatingComponent } from './tmn-rating/tmn-rating.component';
 import { MngCompanyAddComponent } from './mng-company-add/mng-company-add.component';
 import { SignupComponent } from './signup/signup.component';
+import { SidebarComponent } from './sidebar/sidebar.component';
+import { NavbarComponent } from './navbar/navbar.component';
 
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
+    ReactiveFormsModule,
     MaterialdesignModule,
 
     // routing
@@ -24,18 +27,22 @@ import { SignupComponent } from './signup/signup.component';
   declarations: [
     MngCompanyAddComponent,
     MngDashboardComponent,
+    NavbarComponent,
     TmnLoginComponent,
     TmnRatingComponent,
     SigninComponent,
-    SignupComponent
+    SignupComponent,
+    SidebarComponent,
   ],
   exports: [
     MngCompanyAddComponent,
     MngDashboardComponent,
+    NavbarComponent,
     TmnLoginComponent,
     TmnRatingComponent,
     SigninComponent,
-    SignupComponent
+    SignupComponent,
+    SidebarComponent
   ]
 })
 export class ComponentsModule { }

@@ -8,12 +8,14 @@ import {
   MatInputModule,
   MatSelectModule,
   MatSidenavModule,
-  MatToolbarModule
+  MatToolbarModule,
+  MatDividerModule
  } from '@angular/material';
 
 @NgModule({
   imports: [
     MatButtonModule,
+    MatDividerModule,
     MatExpansionModule,
     MatFormFieldModule,
     MatGridListModule,
@@ -25,6 +27,7 @@ import {
   ],
   exports: [
     MatButtonModule,
+    MatDividerModule,
     MatExpansionModule,
     MatFormFieldModule,
     MatGridListModule,

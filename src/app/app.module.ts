@@ -1,10 +1,11 @@
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { PagesModule } from './pages/pages.module';
+import { NgxBootstrapRootModule } from './modules/ngx-bootstrap-root.module';
 
 import { AuthService } from './providers/auth.service';
 
@@ -29,6 +30,7 @@ import { AngularFireAuthModule } from 'angularfire2/auth';
     CommonModule,
     FormsModule,
     PagesModule,
+    NgxBootstrapRootModule,
 
     // Routing
     AppRoutingModule,

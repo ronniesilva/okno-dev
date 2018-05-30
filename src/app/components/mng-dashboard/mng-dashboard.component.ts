@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 
-import { Observable } from 'rxjs';
+import { ActivatedRoute } from '@angular/router';
+import { Observable, Subscription } from 'rxjs';
 
-import { User } from 'firebase';
+import { User } from '@firebase/auth-types';
 import { CompaniesService } from '../../providers/companies.service';
 import { UsersService } from '../../providers/users.service';
 
@@ -11,27 +12,32 @@ import { UsersService } from '../../providers/users.service';
   templateUrl: './mng-dashboard.component.html',
   styleUrls: ['./mng-dashboard.component.sass']
 })
-export class MngDashboardComponent implements OnInit {
+export class MngDashboardComponent implements OnInit, OnDestroy {
 
-  userUid = 'Om8jvAvm6GWhhDP3qZFQW6NokQQ2';
-  currentUser: User;
-  companies$: Observable<{}[]>;
+  private subscription: Subscription;
+  public userUid: string;
+  public currentUser: User;
+  public companies$: Observable<{}[]>;
 
   constructor(
     public companiesService: CompaniesService,
+    private route: ActivatedRoute,
     public usersService: UsersService
-  ) { }
+  ) {
+  }
 
   ngOnInit() {
-    // Recuperando um documento específico - Usuário
-    this.usersService.usersRef.doc(this.userUid)
-      .valueChanges()
-      .subscribe((user: User) => {
-        this.currentUser = user;
-      });
+    console.log('MngDashboard onInit()');
 
-    this.companies$ = this.usersService.usersRef.doc(this.userUid)
+    const id = this.route.snapshot.paramMap.get('id');
+    console.log('MngDashboard paramMap id ' + id);
+
+    this.companies$ = this.usersService.usersRef.doc(id)
       .collection('companies').valueChanges();
+  }
+
+  ngOnDestroy(): void {
+    console.log('MngDashboard onDestroy()');
   }
 
 }

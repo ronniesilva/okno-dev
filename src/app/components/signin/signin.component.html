@@ -1,36 +1,70 @@
-<div class="example-container">
+<section>
+  <div class="container">
+    <div class="col-md-6 mx-auto text-center">
+      <div class="header-title">
+        <h1 class="wv-heading--title">
+          Okno
+        </h1>
+        <!-- <h2 class="wv-heading--subtitle">
+            It's free
+         </h2> -->
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-4 mx-auto">
+        <div class="myform form">
 
-  <!-- header -->
-  <div class="row center-align">
-    <img width="100" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-    <h4>
-      OkNo
-    </h4>
+          <!-- INICIO DO FORM -->
+          <form [formGroup]="form" (ngSubmit)="onSubmit()">
+
+            <div class="form-group">
+              <input type="email" formControlName="email" class="form-control my-input" id="email" placeholder="Email">
+            </div>
+
+            <div class="form-group">
+              <input type="password" formControlName="passwd" class="form-control my-input" id="password" placeholder="Senha">
+            </div>
+
+            <div class="text-center">
+              <button class=" btn btn-block send-button tx-tfm" type="submit" [disabled]="!form.valid">Entrar</button>
+            </div>
+
+          </form>
+          <!-- FIM DO FORM  -->
+
+
+          <!-- GOOGLE SIGNIN -->
+          <!-- <div class="form-group">
+            <button class="btn btn-block g-button">
+              <i class="fa fa-google"></i> Sign up with Google
+            </button>
+            <a class="btn btn-block g-button" href="#" >
+                <i class="fa fa-google"></i> Sign up with Google
+              </a> 
+          </div> -->
+
+          <!-- LINK SIGNUP -->
+          <div class="text-center">
+            <p class="medium mt-3">Não possui uma conta?
+              <a routerLink="signup" routerLinkActive="active">Cadastrar Conta</a>
+            </p>
+          </div>
+
+          <!-- Divider -->
+          <div class="col-md-12 ">
+            <div class="login-or">
+              <hr class="hr-or">
+              <span class="span-or">ou</span>
+            </div>
+          </div>
+
+          <!-- BOTAO TERMINAL -->
+          <div class="form-group">
+            <button class="btn btn-block terminal-button" color="warn" routerLink="/terminal" routerLinkActive="active">Terminal</button>
+          </div>
+
+        </div>
+      </div>
+    </div>
   </div>
-
-  <!-- content -->
-  <mat-form-field>
-    <input matInput placeholder="Email" name="email" id="email" type="email" class="validate" [(ngModel)]="email" required minlength="3"
-      #emailControl="ngModel">
-  </mat-form-field>
-  <br/>
-  <mat-form-field>
-    <input matInput placeholder="Senha" name="passwd" id="password" type="password" class="validate" [(ngModel)]="passwd" required
-      minlength="6" #pwControl="ngModel">
-  </mat-form-field>
-
-  <br />
-
-  <mat-action-row>
-    <button mat-raised-button color="primary" type="submit" name="action" [disabled]="emailControl.invalid || pwControl.invalid"
-      (click)="onSignin()">Entrar</button>
-    <button mat-button color="secondary" routerLink="signup" routerLinkActive="active">Cadastrar</button>
-  </mat-action-row>
-
-  <!-- footer -->
-  <!-- Botão para o terminal -->
-  <br />
-  <div class="button-row">
-    <button mat-raised-button color="warn" routerLink="/terminal" routerLinkActive="active">Terminal</button>
-  </div>
-</div>
+</section>

@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 
+import { AngularFireAuth } from 'angularfire2/auth';
 import { AngularFirestore, AngularFirestoreCollection, AngularFirestoreDocument } from 'angularfire2/firestore';
 import { CollectionReference } from '@firebase/firestore-types';
 
@@ -12,13 +13,24 @@ import { firestore } from 'firebase/app';
 @Injectable()
 export class UsersService {
 
+  public currentUser$: Observable<User>;
   usersRef: AngularFirestoreCollection<User>;
 
   constructor(
+    public angularFireAuth: AngularFireAuth,
     private db: AngularFirestore
   ) {
     // referências não executa nenhuma operação de rede.
     this.usersRef = this.db.collection<User>('users');
+
+    // Usuario que está conectado
+    this.angularFireAuth.auth.onAuthStateChanged(auth => {
+      if (auth) {
+        console.log('Service - Atribuindo user ' + auth.uid);
+        this.currentUser$ = this.usersRef.doc<User>(auth.uid).valueChanges();
+      }
+    });
+
   }
 
   addUserId(user: User): Promise<void> {

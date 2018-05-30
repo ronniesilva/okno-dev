@@ -1,12 +1,21 @@
-<mat-toolbar color="primary">
-    <mat-icon (click)="snav.toggle()">menu</mat-icon>
-    <h2 class="app-title">Okno</h2>
-</mat-toolbar>
+<app-navbar></app-navbar>
+
+<br />
 
 <!-- Creates a layout with a left-positioned sidenav and explicit content. -->
 <mat-sidenav-container class="sidecontainer">
-  <mat-sidenav #snav mode="over">
-    <p (click)="snav.toggle()" routerLink="/manager" routerLinkActive="active">
+
+  <!-- Menu -->
+  <mat-sidenav #snav mode="over" class="mat-sidenav-css">
+    <!-- Perfil do usuario -->
+    <p>
+      {{ currentUser?.email }}
+    </p>
+    
+    <mat-divider></mat-divider>
+
+    <!-- Opcoes do menu -->
+    <p (click)="snav.toggle()" routerLink="/manager/{{ currentUser?.uid }}" routerLinkActive="active">
       <mat-icon>dashboard</mat-icon>
       Dashboard
     </p>
@@ -14,14 +23,26 @@
       <mat-icon>note_add</mat-icon>
       Adicionar Empresa
     </p>
+
+    <mat-divider></mat-divider>
+    
     <p (click)="logout()">
       <mat-icon>exit_to_app</mat-icon>
       Logout
     </p>
   </mat-sidenav>
+
+  <!-- Container -->
   <mat-sidenav-content>
+    <!-- Toobar -->
+    <mat-toolbar color="primary">
+      <mat-icon (click)="snav.toggle()">menu</mat-icon>
+      <h2 class="app-title">Okno</h2>
+    </mat-toolbar>
+    <!-- Conteudo da pagina -->
     <div class="container">
       <router-outlet></router-outlet>
     </div>
   </mat-sidenav-content>
+
 </mat-sidenav-container>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 
 import * as firebase from 'firebase';
@@ -15,40 +16,45 @@ import { User } from './../../interfaces/user';
 })
 export class SignupComponent implements OnInit {
 
-  email: string;
-  passwd1: string;
-  passwd2: string;
+  form: FormGroup;
 
   constructor(
     private authService: AuthService,
+    private formBuilder: FormBuilder,
     private router: Router,
     private usersService: UsersService
   ) { }
 
   ngOnInit() {
+    this.form = this.formBuilder.group({
+      email: [null, [Validators.required, Validators.email]],
+      passwd1: [null, [Validators.required, Validators.minLength(6), Validators.maxLength(50)]],
+      passwd2: [null, [Validators.required, Validators.minLength(6), Validators.maxLength(50)]]
+    });
   }
 
   onSignup() {
     console.log('cadastrar clicked');
 
-    this.authService.addUserAuth(this.email, this.passwd1)
+    this.authService.addUserAuth(this.form.value.email, this.form.value.passwd1)
       .then((userAuth: firebase.auth.UserCredential) => {
 
         // Cria o usuário
         const user: User = {
           uid: userAuth.user.uid,
           email: userAuth.user.email,
-          passwd: this.passwd1
+          passwd: this.form.value.passwd1
         };
 
         // Insere o usuário
         this.usersService.addUserId(user)
           .then(ref => {
-            console.log('Usuario ' + this.email + ' adicionado com sucesso');
-            this.authService.signinWithEmail(this.email, this.passwd1)
+            console.log('Usuario ' + this.form.value.email + ' adicionado com sucesso');
+            this.authService.signinWithEmail(this.form.value.email, this.form.value.passwd1)
             .then(() => {
               console.log('Usuario logado com sucesso');
-              // this.router.navigate(['/manager', user.uid]);
+              this.form.reset();
+              this.router.navigate(['/manager', user.uid]);
               })
               .catch(err => console.log('[erro]: ' + err));
           })

@@ -19,10 +19,9 @@ const pagesRoutes: Routes = [
   },
   {
     path: 'manager', component: ManagerComponent, children: [
-      { path: '', component: MngDashboardComponent },
-      { path: 'manager/:id', component: MngDashboardComponent },
-      { path: 'dashboard', component: MngDashboardComponent },
+      { path: '', redirectTo: '/home', pathMatch: 'full' },
       { path: 'companyadd', component: MngCompanyAddComponent },
+      { path: ':id', component: MngDashboardComponent },
     ]
   },
   {
@@ -31,7 +30,7 @@ const pagesRoutes: Routes = [
     ]
   },
   {
-    path: 'logout',  redirectTo: 'home', pathMatch: 'full'
+    path: 'logout',  redirectTo: '/home', pathMatch: 'full'
   }
 ];
 

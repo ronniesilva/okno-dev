@@ -1,10 +1,17 @@
-<div class="button-row">
-  <button mat-mini-fab color="primary">
+<div class="container-master">
+  <h3>
+    O que achou dos nossos serviços ?
+  </h3>
+
+  <div class="button-row">
+    <button mat-mini-fab color="primary">
       {{ rating?.like }}
-    <mat-icon aria-label="Example icon-button with a heart icon" (click)="onLikeDislike(1)">thumb_up</mat-icon>
-  </button>
-  <button mat-mini-fab color="warn">
+      <mat-icon aria-label="Example icon-button with a heart icon" (click)="onLikeDislike(1)">thumb_up</mat-icon>
+    </button>
+    <button mat-mini-fab color="warn">
       {{ rating?.dislike }}
-    <mat-icon aria-label="Example icon-button with a heart icon" (click)="onLikeDislike(-1)">thumb_down</mat-icon>
-  </button>
+      <mat-icon aria-label="Example icon-button with a heart icon" (click)="onLikeDislike(-1)">thumb_down</mat-icon>
+    </button>
+  </div>
+
 </div>

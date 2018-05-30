@@ -1,11 +1,8 @@
-<p>
-    Empresas:
-</p>
 <mat-accordion class="accordion" *ngFor="let company of companies$ | async">
     <mat-expansion-panel>
         <mat-expansion-panel-header>
             <mat-panel-title>
-                    {{ company.name }}
+                    {{ company?.name }}
             </mat-panel-title>
             <mat-panel-description>
                     <a [routerLink]="['/rating',company.name]" routerLinkActive="active">
@@ -14,5 +11,7 @@
                     <!-- <mat-icon>open_in_new</mat-icon> -->
             </mat-panel-description>
         </mat-expansion-panel-header>
+        <!-- Conteudo -->
+        
     </mat-expansion-panel>
 </mat-accordion>
